@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms;
+﻿using ManageTrades.ViewModels;
+using Xamarin.Forms;
 using static Integration.Factories;
 
 namespace FnTrade
@@ -10,13 +11,12 @@ namespace FnTrade
             InitializeComponent();
 
             MainPage = new NavigationPage(new HomePage());
-
-            getDispatcher().SellRequested += (s, e) => MainPage.Navigation.PushAsync(new SellPage());
         }
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            getDispatcher().SellRequested +=
+                async (s, e) => await MainPage.Navigation.PushAsync(new SellPage(new SellViewModel(e as string)));
         }
 
         protected override void OnSleep()

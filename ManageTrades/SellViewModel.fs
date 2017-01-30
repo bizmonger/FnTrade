@@ -2,13 +2,8 @@
 
 open Core.IntegrationLogic
 
-type SellViewModel() =
+type SellViewModel(symbol) =
 
     inherit ViewModelBase()
 
-    let mutable symbol = ""
-
-    member this.Symbol
-        with get() =      symbol 
-        and  set(value) = symbol <- value
-                          base.NotifyPropertyChanged(<@ this.Symbol @>)
+    member this.Symbol with get() = symbol

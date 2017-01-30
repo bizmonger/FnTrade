@@ -4,15 +4,16 @@
              xmlns:converters="clr-namespace:FnTrade.Converters;assembly=FnTrade"
              xmlns:home="clr-namespace:Home.ViewModels;assembly=Home"
              x:Class="FnTrade.HomePage">
+
+    <ContentPage.BindingContext>
+        <home:HomeViewModel />
+    </ContentPage.BindingContext>
+    
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InstanceToBoolConverter x:Key="InstanceToBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-
-    <ContentPage.BindingContext>
-        <home:HomeViewModel />
-    </ContentPage.BindingContext>
 
     <Grid>
         <Grid.RowDefinitions>

@@ -72,6 +72,9 @@
     <Reference Include="Home">
       <HintPath>..\..\Home\bin\Debug\Home.dll</HintPath>
     </Reference>
+    <Reference Include="ManageTrades">
+      <HintPath>..\..\ManageTrades\bin\Debug\ManageTrades.dll</HintPath>
+    </Reference>
     <Reference Include="Services">
       <HintPath>..\..\Home\bin\Debug\Services.dll</HintPath>
     </Reference>
