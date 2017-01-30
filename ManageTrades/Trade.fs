@@ -13,6 +13,6 @@ let sellShares (service:IBroker) context =
 (*Test*)
 let context = { AccountId= "Bizmonger"
                 Symbol=    "ROK"
-                Qty=        100 }
+                Qty=        5 }
 
 let result = buyShares (MockBroker()) context 5000m

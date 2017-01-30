@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\InstanceToBoolConverter.cs" />
+    <Compile Include="Converters\SumConverter.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Home.xaml.cs">
       <DependentUpon>Home.xaml</DependentUpon>

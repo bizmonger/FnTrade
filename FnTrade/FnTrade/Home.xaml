@@ -12,11 +12,13 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:InstanceToBoolConverter x:Key="InstanceToBoolConverter" />
+            <converters:SumConverter x:Key="SumConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
@@ -78,13 +80,18 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Grid.Row="1" Grid.Column="0" Text="Buy More"  
+        <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" 
+               Text="{Binding Investments, Converter={StaticResource SumConverter}, StringFormat='{}{0:c}'}}" 
+               FontSize="36" TextColor="Gray" 
+               HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+        <Button Grid.Row="2" Grid.Column="0" Text="Buy More"  
                 Command="{Binding Buy}" 
                 CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
                 IsEnabled="{Binding Source={x:Reference SharesListView},
                                     Path=SelectedItem, Converter={StaticResource InstanceToBoolConverter}}" />
 
-        <Button Grid.Row="1" Grid.Column="1" Text="Sell" 
+        <Button Grid.Row="2" Grid.Column="1" Text="Sell" 
                 Command="{Binding Sell}"
                 CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
                 IsEnabled="{Binding Source={x:Reference SharesListView},

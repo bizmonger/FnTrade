@@ -4,9 +4,5 @@
              xmlns:manageTrades="clr-namespace:ManageTrades.ViewModels;assembly=ManageTrades"
              x:Class="FnTrade.SellPage">
 
-    <!--<ContentPage.BindingContext>
-        <manageTrades:SellViewModel />
-    </ContentPage.BindingContext>-->
-    
-    <Label Text="{Binding Symbol}"/>
+    <Label Text="{Binding Symbol, StringFormat='Selling ({0:F0})'}}"/>
 </ContentPage>
