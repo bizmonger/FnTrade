@@ -11,8 +11,7 @@ namespace FnTrade
 
             MainPage = new NavigationPage(new HomePage());
 
-            var dispatcher = getDispatcher();
-            dispatcher.SellRequested += (s, e) => MainPage.Navigation.PushAsync(new SellPage());
+            getDispatcher().SellRequested += (s, e) => MainPage.Navigation.PushAsync(new SellPage());
         }
 
         protected override void OnStart()
