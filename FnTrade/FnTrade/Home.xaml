@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:FnTrade.Converters;assembly=FnTrade"
+             xmlns:home="clr-namespace:Home.ViewModels;assembly=Home"
+             x:Class="FnTrade.HomePage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:InstanceToBoolConverter x:Key="InstanceToBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <home:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListView x:Name="SharesListView" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" 
+                  ItemsSource="{Binding Investments}"
+                  HorizontalOptions="Center" VerticalOptions="Center">
+            <ListView.Header>
+                <Grid >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Grid.Column="0" Text="Symbol" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="Qty"    FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="2" Text="Price"  FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="3" Text="Total"  FontAttributes="Bold" HorizontalTextAlignment="Center" />
+
+                    <BoxView Grid.Row="1" Grid.ColumnSpan="4" Color="Gray" Margin="5,0,5,5"
+                             HorizontalOptions="FillAndExpand" HeightRequest="1" />
+                </Grid>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                                <ColumnDefinition />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Column="0" Text="{Binding Shares.Symbol}" HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="1" Text="{Binding Shares.Qty}"    HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="2" Text="{Binding PricePerShare,  StringFormat='{}{0:c}'}" HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="3" Text="{Binding Total,          StringFormat='{}{0:c}'}" HorizontalTextAlignment="Center" />
+                        </Grid>
+
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Button Grid.Row="1" Grid.Column="0" Text="Buy More"  
+                Command="{Binding Buy}" 
+                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
+                IsEnabled="{Binding Source={x:Reference SharesListView},
+                                    Path=SelectedItem, Converter={StaticResource InstanceToBoolConverter}}" />
+
+        <Button Grid.Row="1" Grid.Column="1" Text="Sell" 
+                Command="{Binding Sell}"
+                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
+                IsEnabled="{Binding Source={x:Reference SharesListView},
+                                    Path=SelectedItem, Converter={StaticResource InstanceToBoolConverter}}" />
+    </Grid>
+
+</ContentPage>
