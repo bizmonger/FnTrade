@@ -15,7 +15,7 @@ type MockBroker() =
             | _      -> None
 
         member this.TryPurchase context balance =
-            let request = { Id=context.AccountId 
+            let request = { AccountId=context.AccountId 
                             PurchaseInfo.Symbol=context.Symbol
                             PurchaseInfo.Quantity=context.Qty }
 
@@ -34,7 +34,7 @@ type MockBroker() =
                 else PurchaseRequested request
             
         member this.TrySell context =
-            SellRequested { Id=       context.AccountId
+            SellRequested { AccountId=       context.AccountId
                             Symbol=   context.Symbol
                             Quantity= context.Qty }
 

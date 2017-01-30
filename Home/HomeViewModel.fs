@@ -20,10 +20,10 @@ type HomeViewModel() as this =
         DelegateCommand( (fun _ -> this.StockInfo <- getQuote broker this.Symbol) ,
                           fun _ -> true) :> ICommand
     let sellCommand =
-        DelegateCommand( (fun o -> dispatcher.Sell accountId (o :?> string)) ,
+        DelegateCommand( (fun o -> dispatcher.Sell { Owner.AccountId=accountId ; Symbol=o :?> string} ) ,
                           fun _ -> true) :> ICommand
     let buyCommand = 
-        DelegateCommand( (fun o -> dispatcher.Buy  accountId (o :?> string)) ,
+        DelegateCommand( (fun o -> dispatcher.Buy  { Owner.AccountId=accountId ; Symbol=o :?> string} ) ,
                           fun _ -> true) :> ICommand
 
     let mutable symbol = ""

@@ -20,15 +20,17 @@ type SharesWithPrice ={
 }
 
 type PurchaseInfo = { 
-    Id       : string
-    Symbol   : string
-    Quantity : int 
+    AccountId : string
+    Symbol    : string
+    Quantity  : int 
 }
 
+type Owner = { AccountId:string ; Symbol:string }
+
 type SellInfo = { 
-    Id       : string
-    Symbol   : string
-    Quantity : int 
+    AccountId : string
+    Symbol    : string
+    Quantity  : int 
 }
 
 type InsufficientFunds = {

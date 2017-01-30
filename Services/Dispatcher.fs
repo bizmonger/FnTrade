@@ -10,8 +10,8 @@ type Dispatcher() =
     
     [<CLIEvent>]
     member this.SellRequested = sellRequested.Publish
-    member this.Sell accountId symbol = sellRequested.Trigger(this , symbol)
+    member this.Sell owner = sellRequested.Trigger(this , owner)
 
     [<CLIEvent>]
     member this.BuyRequested = buyRequested.Publish
-    member this.Buy accountId symbol = buyRequested.Trigger(this , symbol)
+    member this.Buy owner = buyRequested.Trigger(this , owner)

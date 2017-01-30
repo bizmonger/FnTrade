@@ -1,9 +1,10 @@
 ﻿namespace ManageTrades.ViewModels
 
 open Core.IntegrationLogic
+open Core.Entities
 
-type SellViewModel(symbol) =
+type SellViewModel(owner:Owner) =
 
     inherit ViewModelBase()
 
-    member this.Symbol with get() = symbol
+    member this.Symbol with get() = owner.Symbol
