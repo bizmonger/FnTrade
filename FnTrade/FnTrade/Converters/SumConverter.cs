@@ -11,7 +11,7 @@ namespace FnTrade.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var investments = value as IEnumerable<SharesWithPrice>;
+            var investments = value as IEnumerable<SharesInfo>;
             return investments.Sum(x => x.PricePerShare * x.Shares.Qty);
         }
 

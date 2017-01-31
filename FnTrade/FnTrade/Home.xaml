@@ -87,13 +87,13 @@
 
         <Button Grid.Row="2" Grid.Column="0" Text="Buy More"  
                 Command="{Binding Buy}" 
-                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
+                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem}"
                 IsEnabled="{Binding Source={x:Reference SharesListView},
                                     Path=SelectedItem, Converter={StaticResource InstanceToBoolConverter}}" />
 
         <Button Grid.Row="2" Grid.Column="1" Text="Sell" 
                 Command="{Binding Sell}"
-                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem.Shares.Symbol}"
+                CommandParameter="{Binding Source={x:Reference SharesListView}, Path=SelectedItem}"
                 IsEnabled="{Binding Source={x:Reference SharesListView},
                                     Path=SelectedItem, Converter={StaticResource InstanceToBoolConverter}}" />
     </Grid>

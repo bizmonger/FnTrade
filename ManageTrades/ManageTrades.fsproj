@@ -36,6 +36,9 @@
     <DocumentationFile>bin\Release\Trade.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Configuration">
+      <HintPath>..\Configuration\bin\Debug\Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="FSharp.Core">
       <Name>FSharp.Core</Name>
       <AssemblyName>FSharp.Core.dll</AssemblyName>

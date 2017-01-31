@@ -13,38 +13,32 @@ type Shares = {
     Qty       : int 
 }
 
-type SharesWithPrice ={
+type SharesInfo ={
     Shares        : Shares
     PricePerShare : decimal
     Total         : decimal
 }
 
-type PurchaseInfo = { 
-    AccountId : string
-    Symbol    : string
-    Quantity  : int 
-}
-
 type Owner = { AccountId:string ; Symbol:string }
 
-type SellInfo = { 
+type RequestInfo = { 
     AccountId : string
     Symbol    : string
     Quantity  : int 
 }
 
 type InsufficientFunds = {
-    PurchaseAttempt : PurchaseInfo
+    PurchaseAttempt : RequestInfo
     Balance         : decimal
     StockPrice      : decimal
 }    
 
 type PurchaseResult =
-    | PurchaseRequested of PurchaseInfo
-    | UnknownSymbol     of PurchaseInfo
-    | InvalidQuantity   of PurchaseInfo
+    | PurchaseRequested of RequestInfo
+    | UnknownSymbol     of RequestInfo
+    | InvalidQuantity   of RequestInfo
     | InsufficientFunds of InsufficientFunds
 
 type SellResult =
-    | SellRequested        of SellInfo
-    | InsufficientQuantity of SellInfo
+    | SellRequested        of RequestInfo
+    | InsufficientQuantity of RequestInfo

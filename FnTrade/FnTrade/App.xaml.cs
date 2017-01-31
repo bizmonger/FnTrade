@@ -18,7 +18,7 @@ namespace FnTrade
         {
             getDispatcher().SellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
-                    new SellPage(new SellViewModel(e as Owner)));
+                    new SellPage(new SellViewModel(e as SharesInfo)));
         }
 
         protected override void OnSleep()

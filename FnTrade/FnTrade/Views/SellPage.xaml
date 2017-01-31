@@ -4,5 +4,26 @@
              xmlns:manageTrades="clr-namespace:ManageTrades.ViewModels;assembly=ManageTrades"
              x:Class="FnTrade.SellPage">
 
-    <Label Text="{Binding Symbol, StringFormat='Selling ({0:F0})'}}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Text="{Binding Symbol, StringFormat='Selling ({0:F0})'}}"/>
+        <Label Grid.Row="1" Grid.Column="0" Text="{Binding Shares, StringFormat='{0:F0} shares available'}}"/>
+        <Label Grid.Row="2" Grid.Column="0" Text="{Binding StockPrice, StringFormat='{}{0:c} per share'}}"/>
+        <Label Grid.Row="3" Grid.Column="0" Text="{Binding Total, StringFormat='{}{0:c} share investment'}}"/>
+
+        <Entry Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding SellQty, Mode=OneWayToSource}" Placeholder="Enter number of shares to sell" />
+    </Grid>
+
 </ContentPage>

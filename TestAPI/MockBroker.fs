@@ -16,8 +16,8 @@ type MockBroker() =
 
         member this.TryPurchase context balance =
             let request = { AccountId=context.AccountId 
-                            PurchaseInfo.Symbol=context.Symbol
-                            PurchaseInfo.Quantity=context.Qty }
+                            RequestInfo.Symbol=context.Symbol
+                            RequestInfo.Quantity=context.Qty }
 
             match (this :> IBroker).GetInfo context.Symbol with
             | None -> UnknownSymbol request
