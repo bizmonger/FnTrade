@@ -14,13 +14,13 @@ namespace FnTrade
             BindingContext = viewModel;
 
             getDispatcher().ConfirmSellRequested += async (s, e) =>
-            {
-                var requestInfo = e as RequestInfo;
-                var confirmed = await DisplayAlert("Confirm!",
-                                      $"Sell {(requestInfo).Quantity } shares of {requestInfo.Symbol}",
-                                      "Confirm", "Cancel");
-                if (confirmed) getDispatcher().ExecuteSell(requestInfo);
-            };
+                {
+                    var requestInfo = e as RequestInfo;
+                    var confirmed = await DisplayAlert("Confirmation",
+                                          $"Selling ({(requestInfo).Quantity }) shares of {requestInfo.Symbol}?",
+                                          "Confirm", "Cancel");
+                    if (confirmed) getDispatcher().ExecuteSell(requestInfo);
+                };
         }
     }
 }

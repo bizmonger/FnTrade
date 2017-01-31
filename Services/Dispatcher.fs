@@ -20,7 +20,7 @@ type Dispatcher() =
 
     [<CLIEvent>]
     member this.ConfirmSellRequested = confirmSellRequested.Publish
-    member this.ConfirmSell info = buyRequested.Trigger(this , info)
+    member this.ConfirmSell info = confirmSellRequested.Trigger(this , info)
 
     [<CLIEvent>]
     member this.ExecuteSellRequested = executeSellRequested.Publish
