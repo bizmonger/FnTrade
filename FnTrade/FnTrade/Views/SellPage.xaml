@@ -4,13 +4,14 @@
              xmlns:manageTrades="clr-namespace:ManageTrades.ViewModels;assembly=ManageTrades"
              x:Class="FnTrade.SellPage">
 
-    <Grid>
+    <Grid Margin="5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
@@ -22,14 +23,14 @@
         </Grid.ColumnDefinitions>
 
         <Label Grid.Row="0" Grid.Column="0" Text="{Binding Symbol,     StringFormat='Selling ({0:F0})'}}" FontSize="Large" />
-        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Shares,     StringFormat='{0:F0} shares available'}}"/>
-        <Label Grid.Row="3" Grid.Column="0" Text="{Binding StockPrice, StringFormat='{}{0:c} per share'}}"/>
-        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Total,      StringFormat='{}{0:c} investmented'}}" FontSize="Medium" HorizontalTextAlignment="End" />
+        <Label Grid.Row="2" Grid.Column="0" Text="{Binding Shares,     StringFormat='{0:F0} shares available'}}" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+        <Label Grid.Row="3" Grid.Column="0" Text="{Binding StockPrice, StringFormat='{}{0:c} per share'}}"       HorizontalTextAlignment="Start" HorizontalOptions="Start" />
+        <Label Grid.Row="4" Grid.Column="1" Text="{Binding Total,      StringFormat='{}{0:c} Invested'}}" FontSize="Medium" HorizontalOptions="Start" />
 
-        <Entry Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding SellQty, Mode=TwoWay}" 
+        <Entry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding SellQty, Mode=TwoWay}" 
                Placeholder="Enter number of shares to sell" HorizontalTextAlignment="Center" />
 
-        <Button Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" Command="{Binding Confirm}" />
+        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" Command="{Binding Confirm}" />
     </Grid>
 
 </ContentPage>
