@@ -27,24 +27,26 @@ type SellViewModel(info:SharesInfo) as this =
     member this.StockPrice with get() = info.PricePerShare
     member this.Total      with get() = ((decimal)info.Shares.Qty * info.PricePerShare)
 
+    member this.SellQty    
+        with get() =      sellQty
+        and  set(value) = sellQty <- value
+                          let success , validQty = Int32.TryParse sellQty
+                          if  success then this.CanSell <- validQty >  0 && 
+                                                           validQty <= this.Shares
+                          else this.CanSell <- false
+                          this.UpdateSellValue()
+                          base.NotifyPropertyChanged(<@ this.SellQty @>)
     member this.SellValue  
         with get() =     sellValue
         and set(value) = sellValue <- value
                          base.NotifyPropertyChanged(<@ this.SellValue @>)
-
-    member this.SellQty    
-        with get() =      sellQty
-        and  set(value) = sellQty <- value
-                          this.UpdateSellValue()
-                          base.NotifyPropertyChanged(<@ this.SellQty @>)
         
-    member this.CanSell   with get() = canSell
+    member this.CanSell   with get() =      canSell
                           and  set(value) = canSell <- value
                                             base.NotifyPropertyChanged(<@ this.CanSell @>)
     member this.Confirm = confirm
 
     member private this.ConfirmSell() =
-        
         if this.CanSell then
             dispatcher.ConfirmSell { AccountId = accountId
                                      Symbol    = this.Symbol
