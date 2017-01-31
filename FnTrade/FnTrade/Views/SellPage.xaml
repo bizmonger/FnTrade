@@ -31,7 +31,7 @@
                Placeholder="Enter number of shares to sell" HorizontalTextAlignment="Center" Keyboard="Numeric" />
 
         <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" 
-                Command="{Binding Confirm}" IsEnabled="{Binding CanSell, UpdateSourceEventName=ValueChanged}" />
+                Command="{Binding Confirm}" IsEnabled="{Binding CanSell}" />
     </Grid>
 
 </ContentPage>
