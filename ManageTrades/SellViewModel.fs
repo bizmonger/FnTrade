@@ -17,6 +17,7 @@ type SellViewModel(info:SharesInfo) as this =
 
     let mutable sellQty = ""
     let mutable canSell = false
+    let mutable sellValue = 0m
 
     let confirm = DelegateCommand( (fun _ -> this.ConfirmSell()) ,
                                     fun _ -> true ) :> ICommand
@@ -26,14 +27,15 @@ type SellViewModel(info:SharesInfo) as this =
     member this.StockPrice with get() = info.PricePerShare
     member this.Total      with get() = ((decimal)info.Shares.Qty * info.PricePerShare)
 
+    member this.SellValue  
+        with get() =     sellValue
+        and set(value) = sellValue <- value
+                         base.NotifyPropertyChanged(<@ this.SellValue @>)
+
     member this.SellQty    
         with get() =      sellQty
         and  set(value) = sellQty <- value
-
-                          let success , validQty = Int32.TryParse sellQty
-                          if  success then this.CanSell <- validQty >  0 && 
-                                                           validQty <= this.Shares
-                          else this.CanSell <- false
+                          this.UpdateSellValue()
                           base.NotifyPropertyChanged(<@ this.SellQty @>)
         
     member this.CanSell   with get() = canSell
@@ -47,3 +49,9 @@ type SellViewModel(info:SharesInfo) as this =
             dispatcher.ConfirmSell { AccountId = accountId
                                      Symbol    = this.Symbol
                                      Quantity  = Int32.Parse this.SellQty }
+
+    member private this.UpdateSellValue() =
+        let success , validQty = Int32.TryParse sellQty
+        if  success 
+        then this.SellValue <- (decimal)validQty * info.PricePerShare
+        else this.SellValue <- 0m

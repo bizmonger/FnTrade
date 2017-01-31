@@ -13,6 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
@@ -30,7 +31,10 @@
         <Entry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding SellQty, Mode=TwoWay}" 
                Placeholder="Enter number of shares to sell" HorizontalTextAlignment="Center" Keyboard="Numeric" />
 
-        <Button Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" 
+        <Label Grid.Row="7" Grid.Column="1" Text="{Binding SellValue, StringFormat='{}{0:c}'}" 
+               HorizontalTextAlignment="End" />
+
+        <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" 
                 Command="{Binding Confirm}" IsEnabled="{Binding CanSell}" />
     </Grid>
 
