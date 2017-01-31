@@ -5,10 +5,18 @@ namespace FnTrade
 {
     public partial class RequestSellConfirmedPage : ContentPage
     {
+        RequestSellConfirmedViewModel _viewModel;
+
         public RequestSellConfirmedPage(RequestSellConfirmedViewModel viewModel)
         {
             InitializeComponent();
-            BindingContext = viewModel;
+            BindingContext = _viewModel = viewModel;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            _viewModel.Load();
         }
     }
 }

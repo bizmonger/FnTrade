@@ -16,6 +16,7 @@ type RequestSellConfirmedViewModel(request:RequestInfo) =
     member this.Quantity with get() = request.Quantity
     member this.Total    with get() =      total
                          and  set(value) = total <- value
+                                           base.NotifyPropertyChanged(<@ this.Total @>)
     member this.Load() =
         match broker.GetInfo request.Symbol with
         | Some info -> this.Total <- info.Price * (decimal) request.Quantity

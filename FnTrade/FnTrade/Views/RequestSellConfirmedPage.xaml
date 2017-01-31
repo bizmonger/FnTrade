@@ -3,6 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FnTrade.RequestSellConfirmedPage">
 
-    <Label Text="Request Sent" FontSize="Large" TextColor="Green" FontAttributes="Bold" HorizontalOptions="Center" />
-    
+    <Grid Margin="10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Request Sent" 
+           FontSize="Large" TextColor="Green" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <StackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
+            <Label Text="{Binding Quantity, StringFormat='Sell ({0:F0}) shares of'}}"
+                   FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+            <Label Text="{Binding Symbol}"
+                   FontSize="Medium" HorizontalOptions="Start" />
+        </StackLayout>
+
+        <Label Grid.Row="3" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}}"
+           FontSize="24" FontAttributes="Bold" HorizontalOptions="End" />
+    </Grid>
+
 </ContentPage>
