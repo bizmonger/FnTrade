@@ -49,6 +49,7 @@
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="Trade.fs" />
     <Compile Include="SellViewModel.fs" />
+    <Compile Include="RequestSellConfirmedViewModel.fs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.fsproj">

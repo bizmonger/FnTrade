@@ -8,6 +8,7 @@ type Dispatcher() =
     let sellRequested = new Event<EventHandler<_>,_>()
     let buyRequested =  new Event<EventHandler<_>,_>()
     let confirmSellRequested = new Event<EventHandler<_>,_>()
+    let executeSellRequested = new Event<EventHandler<_>,_>()
     
     [<CLIEvent>]
     member this.SellRequested = sellRequested.Publish
@@ -20,3 +21,7 @@ type Dispatcher() =
     [<CLIEvent>]
     member this.ConfirmSellRequested = confirmSellRequested.Publish
     member this.ConfirmSell info = buyRequested.Trigger(this , info)
+
+    [<CLIEvent>]
+    member this.ExecuteSellRequested = executeSellRequested.Publish
+    member this.ExecuteSell info = executeSellRequested.Trigger(this , info)
