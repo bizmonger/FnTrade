@@ -6,7 +6,7 @@
     <Grid Margin="10,5">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
@@ -18,16 +18,18 @@
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Request Sent" 
                FontSize="Large" TextColor="Green" FontAttributes="Bold" HorizontalOptions="Center" />
 
-        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal">
-            <Label Text="{Binding Quantity, StringFormat='Sell ({0:F0}) shares of'}}"
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center">
+            <StackLayout  Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="{Binding Quantity, StringFormat='Sell ({0:F0}) shares of'}}"
                    FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
-            <Label Text="{Binding Symbol}"
+                <Label Text="{Binding Symbol}"
                    FontSize="Medium" HorizontalOptions="Start" />
-        </StackLayout>
+            </StackLayout>
 
-        <Label Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}}"
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}}"
            FontSize="24" FontAttributes="Bold" HorizontalOptions="End" />
+        </StackLayout>
     </Grid>
 
 </ContentPage>

@@ -26,6 +26,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTrade.Droid", "FnTrade\FnTrade.Droid\FnTrade.Droid.csproj", "{756F4109-342F-4676-A9C1-50F8426DBC47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTrade", "FnTrade\FnTrade\FnTrade.csproj", "{82D49208-3907-4642-8705-3D711F7F83D3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B7B5533-3360-4AEE-A4FB-8516A74FD8FE} = {8B7B5533-3360-4AEE-A4FB-8516A74FD8FE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

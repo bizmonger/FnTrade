@@ -25,14 +25,7 @@ namespace FnTrade
                     new RequestSellConfirmedPage(new RequestSellConfirmedViewModel(e as RequestInfo)));
         }
 
-        protected override void OnSleep()
-        {
-            // Handle when your app sleeps
-        }
-
-        protected override void OnResume()
-        {
-            // Handle when your app resumes
-        }
+        protected override void OnSleep() { }
+        protected override void OnResume() { }
     }
 }
