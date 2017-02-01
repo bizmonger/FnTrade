@@ -21,14 +21,14 @@
         <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center">
             <StackLayout  Orientation="Horizontal" VerticalOptions="Center">
                 <Label Text="{Binding Quantity, StringFormat='Buy ({0:F0}) shares of'}}"
-                   FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+                        FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
 
                 <Label Text="{Binding Symbol}"
-                   FontSize="Medium" HorizontalOptions="Start" />
+                       FontSize="Medium" HorizontalOptions="Start" />
             </StackLayout>
 
             <Label Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}}"
-           FontSize="24" FontAttributes="Bold" HorizontalOptions="End" />
+                   FontSize="24" FontAttributes="Bold" HorizontalOptions="End" />
         </StackLayout>
     </Grid>
 
