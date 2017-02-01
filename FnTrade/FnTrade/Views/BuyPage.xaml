@@ -27,16 +27,14 @@
         <Label Grid.Row="2" Grid.Column="0" Text="{Binding StockPrice, StringFormat='{}{0:c} per share'}}"        FontSize="Medium" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
         <Label Grid.Row="3" Grid.Column="0" Text="{Binding Total,      StringFormat='{}{0:c} Invested'}}" FontSize="Medium" HorizontalTextAlignment="Start" HorizontalOptions="Start" />
         <Label Grid.Row="4" Grid.Column="1" Text="{Binding Balance,    StringFormat='{}{0:c} balance'}}" FontSize="Large" HorizontalOptions="Start" />
-        
-        
-        
+
         <Entry Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding BuyQty, Mode=TwoWay}" 
                Placeholder="Enter number of shares to buy" HorizontalTextAlignment="Center" Keyboard="Numeric" />
 
         <Label Grid.Row="7" Grid.Column="1" Text="{Binding BuyValue, StringFormat='{}{0:c}'}" HorizontalTextAlignment="End" />
 
         <Button Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2" Text="Confirm" 
-                Command="{Binding Confirm}" IsEnabled="{Binding Buy}" />
+                Command="{Binding Confirm}" IsEnabled="{Binding CanBuy}" />
     </Grid>
 
 </ContentPage>
