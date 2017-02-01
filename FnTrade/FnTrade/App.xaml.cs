@@ -16,6 +16,14 @@ namespace FnTrade
 
         protected override void OnStart()
         {
+            getDispatcher().BuyRequested +=
+                async (s, e) => await MainPage.Navigation.PushAsync(
+                    new BuyPage(new BuyViewModel(e as SharesInfo)));
+
+            getDispatcher().ExecuteBuyRequested +=
+                async (s, e) => await MainPage.Navigation.PushAsync(
+                    new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(e as RequestInfo)));
+
             getDispatcher().SellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
                     new SellPage(new SellViewModel(e as SharesInfo)));

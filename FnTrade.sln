@@ -12,6 +12,9 @@ EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "TestAPI", "TestAPI\TestAPI.fsproj", "{BAED6479-EC26-45E2-8840-19FA09AF6DD8}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ManageTrades", "ManageTrades\ManageTrades.fsproj", "{8B7B5533-3360-4AEE-A4FB-8516A74FD8FE}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6FB37301-D4B6-4360-8953-FB98AE496DCE} = {6FB37301-D4B6-4360-8953-FB98AE496DCE}
+	EndProjectSection
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "ViewStatements", "ViewStatements\ViewStatements.fsproj", "{7141CD9A-54D0-45EF-82C1-A74BFEC2D7DD}"
 EndProject
@@ -27,6 +30,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTrade.Droid", "FnTrade\Fn
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FnTrade", "FnTrade\FnTrade\FnTrade.csproj", "{82D49208-3907-4642-8705-3D711F7F83D3}"
 	ProjectSection(ProjectDependencies) = postProject
+		{6FB37301-D4B6-4360-8953-FB98AE496DCE} = {6FB37301-D4B6-4360-8953-FB98AE496DCE}
 		{8B7B5533-3360-4AEE-A4FB-8516A74FD8FE} = {8B7B5533-3360-4AEE-A4FB-8516A74FD8FE}
 	EndProjectSection
 EndProject

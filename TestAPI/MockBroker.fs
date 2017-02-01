@@ -45,7 +45,7 @@ type MockBroker() =
             let ownedTSLA  = { AccountId=accountId ; Symbol="TSLA" ;  Qty=200 }
 
             seq [
-                 { Shares=ownedMSFT ; PricePerShare=((this :> IBroker).GetInfo "MSFT").Value.Price ; Total=((this :> IBroker).GetInfo "MSFT").Value.Price * (decimal)ownedMSFT.Qty }
-                 { Shares=ownedROK  ; PricePerShare=((this :> IBroker).GetInfo "ROK" ).Value.Price ; Total=((this :> IBroker).GetInfo "ROK" ).Value.Price * (decimal)ownedROK.Qty  }
-                 { Shares=ownedTSLA ; PricePerShare=((this :> IBroker).GetInfo "TSLA").Value.Price ; Total=((this :> IBroker).GetInfo "TSLA").Value.Price * (decimal)ownedTSLA.Qty }
+                 { Shares=ownedMSFT ; PricePerShare=((this :> IBroker).GetInfo "MSFT").Value.Price ; Total=((this :> IBroker).GetInfo "MSFT").Value.Price * (decimal)ownedMSFT.Qty; Balance=20000m }
+                 { Shares=ownedROK  ; PricePerShare=((this :> IBroker).GetInfo "ROK" ).Value.Price ; Total=((this :> IBroker).GetInfo "ROK" ).Value.Price * (decimal)ownedROK.Qty ; Balance=20000m }
+                 { Shares=ownedTSLA ; PricePerShare=((this :> IBroker).GetInfo "TSLA").Value.Price ; Total=((this :> IBroker).GetInfo "TSLA").Value.Price * (decimal)ownedTSLA.Qty; Balance=20000m }
                 ]

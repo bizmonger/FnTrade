@@ -23,7 +23,7 @@ type HomeViewModel() as this =
         DelegateCommand( (fun o -> dispatcher.Sell (o :?> SharesInfo) ) ,
                           fun _ -> true) :> ICommand
     let buyCommand = 
-        DelegateCommand( (fun o -> dispatcher.Buy  { Owner.AccountId=accountId ; Symbol=o :?> string} ) ,
+        DelegateCommand( (fun o -> dispatcher.Buy  (o :?> SharesInfo) ) ,
                           fun _ -> true) :> ICommand
 
     let mutable symbol = ""

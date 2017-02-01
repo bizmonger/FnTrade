@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FnTrade.RequestBuyConfirmedPage">
+
+    <Grid Margin="10,5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Request Sent" 
+               FontSize="Large" TextColor="Green" FontAttributes="Bold" HorizontalOptions="Center" />
+
+        <StackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalOptions="Center">
+            <StackLayout  Orientation="Horizontal" VerticalOptions="Center">
+                <Label Text="{Binding Quantity, StringFormat='Buy ({0:F0}) shares of'}}"
+                   FontSize="Medium" HorizontalOptions="Center" HorizontalTextAlignment="Center" />
+
+                <Label Text="{Binding Symbol}"
+                   FontSize="Medium" HorizontalOptions="Start" />
+            </StackLayout>
+
+            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Total, StringFormat='{}{0:c}'}}"
+           FontSize="24" FontAttributes="Bold" HorizontalOptions="End" />
+        </StackLayout>
+    </Grid>
+
+</ContentPage>

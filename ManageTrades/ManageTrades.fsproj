@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
+    <Compile Include="RequestBuyConfirmedViewModel.fs" />
     <Compile Include="Trade.fs" />
+    <Compile Include="BuyViewModel.fs" />
     <Compile Include="SellViewModel.fs" />
     <Compile Include="RequestSellConfirmedViewModel.fs" />
   </ItemGroup>

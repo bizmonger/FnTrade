@@ -17,6 +17,7 @@ type SharesInfo ={
     Shares        : Shares
     PricePerShare : decimal
     Total         : decimal
+    Balance       : decimal
 }
 
 type Owner = { AccountId:string ; Symbol:string }
