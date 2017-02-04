@@ -13,7 +13,6 @@ type SellViewModel(info:SharesInfo) as this =
 
     let dispatcher = getDispatcher()
     let accountId =  getAccountId()
-    let broker =     getBroker() :> IBroker
 
     let mutable sellQty = ""
     let mutable canSell = false

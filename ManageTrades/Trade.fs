@@ -2,17 +2,14 @@
 
 open Services
 open Core.Entities
-open TestAPI
+open TestAPIImpl
 
-let buyShares (service:IBroker) context balance =
-    (context , balance) ||> service.TryPurchase
-
-let sellShares (service:IBroker) context =
-    context |> service.TrySell
+let buyShares purchaseFn context balance = (context , balance) ||> purchaseFn
+let sellShares sellFn context =            context |> sellFn
 
 (*Test*)
-let context = { AccountId= "Bizmonger"
-                Symbol=    "ROK"
-                Qty=        5 }
+let context = { RequestInfo.AccountId= "Bizmonger"
+                RequestInfo.Symbol=    "ROK"
+                RequestInfo.Quantity=   5 }
 
-let result = buyShares (MockBroker()) context 5000m
+let result = buyShares tryPurchase context 5000m

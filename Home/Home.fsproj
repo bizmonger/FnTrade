@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
-    <Compile Include="Search.fs" />
     <Compile Include="HomeViewModel.fs" />
   </ItemGroup>
   <ItemGroup>

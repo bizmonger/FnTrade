@@ -1,12 +1,13 @@
 ﻿namespace Home.ViewModels
 
+open System.Collections.ObjectModel
 open System.Windows.Input
 open Core.IntegrationLogic
 open Core.Entities
 open Integration.Factories
 open Services
-open Search
-open System.Collections.ObjectModel
+open TestAPIImpl
+
 
 type HomeViewModel() as this =
 
@@ -14,10 +15,9 @@ type HomeViewModel() as this =
 
     let dispatcher = getDispatcher()
     let accountId =  getAccountId()
-    let broker =     getBroker() :> IBroker
 
     let searchCommand = 
-        DelegateCommand( (fun _ -> this.StockInfo <- getQuote broker this.Symbol) ,
+        DelegateCommand( (fun _ -> this.StockInfo <- getInfo this.Symbol) ,
                           fun _ -> true) :> ICommand
     let sellCommand =
         DelegateCommand( (fun o -> dispatcher.Sell (o :?> SharesInfo) ) ,
@@ -31,7 +31,7 @@ type HomeViewModel() as this =
     let mutable investments = ObservableCollection<SharesInfo>()
 
     member this.Load() =
-        let result = broker.InvestmentsOf accountId
+        let result = investmentsOf accountId
         this.Investments <- ObservableCollection<SharesInfo>(result)
 
     member this.Symbol

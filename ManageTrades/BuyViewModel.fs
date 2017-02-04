@@ -13,7 +13,7 @@ type BuyViewModel(info:SharesInfo) as this =
 
     let dispatcher = getDispatcher()
     let accountId =  getAccountId()
-    let broker =     getBroker() :> IBroker
+//    let broker =     getBroker() :> IBroker
 
     let mutable buyQty = ""
     let mutable canBuy = false
