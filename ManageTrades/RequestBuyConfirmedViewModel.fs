@@ -20,4 +20,4 @@ type RequestBuyConfirmedViewModel(request:RequestInfo) =
     member this.Load() =
         match getInfo request.Symbol with
         | Some info -> this.Total <- info.Price * (decimal) request.Quantity
-        | None      -> failwith (sprintf "Failed to retrieve stock information for %s" this.Symbol)
+        | None      -> failwith   <| sprintf "Failed to retrieve stock information for %s" this.Symbol
