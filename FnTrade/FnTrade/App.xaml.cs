@@ -28,15 +28,8 @@ namespace FnTrade
                     new BuyPage(new BuyViewModel(e as SharesInfo)));
 
             getDispatcher().ExecuteBuyRequested +=
-                async (s, e) =>
-                {
-                    var requestInfo = e as RequestInfo;
-                    var myEvent = Events.NewBuyRequested(requestInfo);
-                    _eventStore = store(new Account("undefined account", _account), myEvent, _eventStore);
-
-                    await MainPage.Navigation.PushAsync(
-                        new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(requestInfo)));
-                };
+                async (s, e) => await MainPage.Navigation.PushAsync(
+                    new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(e as RequestInfo)));
 
             getDispatcher().SellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
