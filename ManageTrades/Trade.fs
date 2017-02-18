@@ -5,7 +5,7 @@ open Core.Entities
 open TestAPIImpl
 
 let buyShares purchaseFn context balance = (context , balance) ||> purchaseFn
-let sellShares sellFn context =            context |> sellFn
+let sellShares sellFn context =             context |> sellFn
 
 (*Test*)
 let context = { RequestInfo.AccountId= "Bizmonger"
