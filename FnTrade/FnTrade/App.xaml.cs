@@ -1,12 +1,19 @@
-﻿using ManageTrades.ViewModels;
+﻿using System;
+using System.Collections.Generic;
+using ManageTrades.ViewModels;
+using Microsoft.FSharp.Collections;
 using Xamarin.Forms;
 using static Core.Entities;
+using static Core.EventStore;
 using static Integration.Factories;
 
 namespace FnTrade
 {
     public partial class App : Application
     {
+        FSharpList<Tuple<Account, Events>> _eventStore = new FSharpList<Tuple<Account, Events>>(null, null);
+        List<Shares> _account = new List<Shares>();
+
         public App()
         {
             InitializeComponent();
@@ -21,8 +28,15 @@ namespace FnTrade
                     new BuyPage(new BuyViewModel(e as SharesInfo)));
 
             getDispatcher().ExecuteBuyRequested +=
-                async (s, e) => await MainPage.Navigation.PushAsync(
-                    new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(e as RequestInfo)));
+                async (s, e) =>
+                {
+                    var requestInfo = e as RequestInfo;
+                    var myEvent = Events.NewBuyRequested(requestInfo);
+                    _eventStore = store(new Account("undefined account", _account), myEvent, _eventStore);
+
+                    await MainPage.Navigation.PushAsync(
+                        new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(requestInfo)));
+                };
 
             getDispatcher().SellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(

@@ -47,6 +47,7 @@
     <Compile Include="Entities.fs" />
     <Compile Include="ViewModelBase.fs" />
     <Compile Include="DelegateCommand.fs" />
+    <Compile Include="EventStore.fs" />
   </ItemGroup>
   <PropertyGroup>
     <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">12</MinimumVisualStudioVersion>

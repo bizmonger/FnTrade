@@ -1,24 +1,24 @@
 ﻿namespace Core.IntegrationLogic
 
-open System.ComponentModel
-open Microsoft.FSharp.Quotations.Patterns
+    open System.ComponentModel
+    open Microsoft.FSharp.Quotations.Patterns
 
-type ViewModelBase () =
+    type ViewModelBase () =
 
-    let propertyChanged = 
-        Event<PropertyChangedEventHandler,PropertyChangedEventArgs>()
+        let propertyChanged = 
+            Event<PropertyChangedEventHandler,PropertyChangedEventArgs>()
 
-    let getPropertyName = function 
-        | PropertyGet(_,pi,_) -> pi.Name
-        | _ -> invalidOp "Expecting property getter expression"
+        let getPropertyName = function 
+            | PropertyGet(_,pi,_) -> pi.Name
+            | _ -> invalidOp "Expecting property getter expression"
 
-    interface INotifyPropertyChanged with
+        interface INotifyPropertyChanged with
 
-        [<CLIEvent>]
-        member this.PropertyChanged = propertyChanged.Publish
+            [<CLIEvent>]
+            member this.PropertyChanged = propertyChanged.Publish
 
-    member private this.NotifyPropertyChanged propertyName = 
-        propertyChanged.Trigger(this,PropertyChangedEventArgs(propertyName))
+        member private this.NotifyPropertyChanged propertyName = 
+            propertyChanged.Trigger(this,PropertyChangedEventArgs(propertyName))
 
-    member this.NotifyPropertyChanged quotation = 
-        quotation |> getPropertyName |> this.NotifyPropertyChanged
+        member this.NotifyPropertyChanged quotation = 
+            quotation |> getPropertyName |> this.NotifyPropertyChanged
