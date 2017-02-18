@@ -47,6 +47,11 @@
     <Compile Include="Factories.fs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ManageTrades\ManageTrades.fsproj">
+      <Name>ManageTrades</Name>
+      <Project>{8b7b5533-3360-4aee-a4fb-8516a74fd8fe}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Services\Services.fsproj">
       <Name>Services</Name>
       <Project>{18d594ee-a3fd-4293-9906-7baf1f3c12d2}</Project>
