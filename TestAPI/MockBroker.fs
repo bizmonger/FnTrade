@@ -36,7 +36,7 @@ let trySell context =
 let investmentsOf accountId =
     let ownedMSFT =  { AccountId=accountId ; Symbol="MSFT" ;  Qty=100 }
     let ownedROK  =  { AccountId=accountId ; Symbol="ROK"  ;  Qty=200 }
-    let ownedTSLA  = { AccountId=accountId ; Symbol="TSLA" ;  Qty=200 }
+    let ownedTSLA =  { AccountId=accountId ; Symbol="TSLA" ;  Qty=200 }
         
     seq [
             { Shares=ownedMSFT ; PricePerShare=(getInfo "MSFT").Value.Price ; Total=(getInfo "MSFT").Value.Price * (decimal)ownedMSFT.Qty; Balance=20000m }
