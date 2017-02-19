@@ -35,16 +35,10 @@
     <WarningLevel>3</WarningLevel>
     <DocumentationFile>bin\Release\Trade.XML</DocumentationFile>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Configuration">
-      <HintPath>..\Configuration\bin\Debug\Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="FSharp.Core">
-      <Name>FSharp.Core</Name>
-      <AssemblyName>FSharp.Core.dll</AssemblyName>
-      <HintPath>$(MSBuildExtensionsPath32)\..\Reference Assemblies\Microsoft\FSharp\.NETCore\$(TargetFSharpCoreVersion)\FSharp.Core.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+  <PropertyGroup>
+    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">12</MinimumVisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.Portable.FSharp.Targets" />
   <ItemGroup>
     <Compile Include="AssemblyInfo.fs" />
     <Compile Include="BuyViewModel.fs" />
@@ -52,8 +46,14 @@
     <Compile Include="RequestBuyConfirmedViewModel.fs" />
     <Compile Include="RequestSellConfirmedViewModel.fs" />
     <Compile Include="Trade.fs" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Configuration\Configuration.fsproj">
+      <Name>Configuration</Name>
+      <Project>{6fb37301-d4b6-4360-8953-fb98ae496dce}</Project>
+      <Private>True</Private>
+    </ProjectReference>
     <ProjectReference Include="..\Core\Core.fsproj">
       <Name>Core</Name>
       <Project>{5bdbf0cc-dd0d-4c07-a94f-e199819d8184}</Project>
@@ -69,11 +69,15 @@
       <Project>{baed6479-ec26-45e2-8840-19fa09af6dd8}</Project>
       <Private>True</Private>
     </ProjectReference>
+    <Reference Include="FSharp.Core">
+      <HintPath>..\packages\FSharp.Core.4.1.0\lib\portable-net45+netcore45\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\portable-net40+sl4+win8+wp8\System.ValueTuple.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
-  <PropertyGroup>
-    <MinimumVisualStudioVersion Condition="'$(MinimumVisualStudioVersion)' == ''">12</MinimumVisualStudioVersion>
-  </PropertyGroup>
-  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\FSharp\Microsoft.Portable.FSharp.Targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
