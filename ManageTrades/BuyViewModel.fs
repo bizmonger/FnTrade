@@ -33,6 +33,7 @@ type BuyViewModel(info:SharesInfo) as this =
                           if  success then this.CanBuy <- info.PricePerShare
                                                           *(decimal)validQty  <= this.Balance
                           else this.CanBuy <- false
+
                           this.UpdateBuyValue()
                           base.NotifyPropertyChanged(<@ this.BuyQty @>)
     member this.BuyValue  

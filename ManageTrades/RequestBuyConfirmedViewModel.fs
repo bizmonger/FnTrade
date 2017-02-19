@@ -21,15 +21,8 @@ type RequestBuyConfirmedViewModel(request:RequestInfo) =
                          and  set(value) = total <- value
                                            base.NotifyPropertyChanged(<@ this.Total @>)
     member this.Load() =
-//        let client = new HttpClient()
-//        client.BaseAddress <- Uri("http://localhost:48213/api/transaction");
-//        client.DefaultRequestHeaders.Accept.Add(MediaTypeWithQualityHeaderValue("application/json"));
-//
-//        let response = client.GetAsync("api/yourcustomobjects").Result;
-//        if response.IsSuccessStatusCode
-//        then let result = response.Content.ReadAsStringAsync().RunSynchronously
-//             ()
-//        else failwith "Something bad happened"
+
+        
 
         getInfo request.Symbol |> function
         | Some info -> this.Total <- info.Price * (decimal) request.Quantity

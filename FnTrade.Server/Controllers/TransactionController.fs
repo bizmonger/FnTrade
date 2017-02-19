@@ -13,6 +13,9 @@ type TransactionController() =
                     { AccountId = "Bizmonger"; Symbol = "MSFT"; Qty = 10 }
                     { AccountId = "Scarface" ; Symbol = "ROK" ; Qty = 2  } |]
 
-    member x.Get() =           values
+    member x.Post (shares:Shares) = x.Ok shares
+
+    member x.Get() = values
+
     member x.Get (id:string) = 
         values |> Array.filter (fun x -> x.AccountId.ToLower() = id.ToLower())

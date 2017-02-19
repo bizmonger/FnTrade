@@ -1,16 +1,13 @@
 ﻿module Testing
 
-open Services
-open Core.Entities
-open TestAPI
-open ManageTradeImpl
-open System.Net.Http
 open System
+open System.Net.Http
 open System.Net.Http.Headers
 open NUnit.Framework
 open FsUnit
 open FSharp.Data
 open Xunit
+open Newtonsoft.Json
 
 type Share = { 
     AccountId : string
@@ -66,12 +63,26 @@ let ``Type Provider call for everything`` () =
 [<Test>]
 let ``Type Provider call with argument`` () =
 
-        let accountId = "bizmonger"
-        Repository.Load (sprintf "%s%s" "http://localhost:48213/api/transaction/" accountId)
-        |> Array.toList
-        |> List.map(fun x -> { AccountId= x.AccountId
-                               Symbol=    x.Symbol
-                               Qty=       x.Qty })
+    let accountId = "bizmonger"
+    Repository.Load (sprintf "%s%s" "http://localhost:48213/api/transaction/" accountId)
+    |> Array.toList
+    |> List.map(fun x -> { AccountId= x.AccountId
+                           Symbol=    x.Symbol
+                           Qty=       x.Qty })
 
-        |> should equal <| [{ AccountId = "Bizmonger"; Symbol = "TSLA"; Qty = 5  }
-                            { AccountId = "Bizmonger"; Symbol = "MSFT"; Qty = 10 }]
+    |> should equal <| [{ AccountId = "Bizmonger"; Symbol = "TSLA"; Qty = 5  }
+                        { AccountId = "Bizmonger"; Symbol = "MSFT"; Qty = 10 }]
+
+[<Test>]
+let ``WebAPI post`` () =
+
+    let entity = { AccountId = "Bizmonger"; Symbol = "TSLA"; Qty = 5 }
+    let json = JsonConvert.SerializeObject(entity)
+    let content = new StringContent(json)
+    content.Headers.ContentType <- new MediaTypeHeaderValue("application/json")
+    
+    let client = new HttpClient()
+    client.BaseAddress <- Uri("http://localhost:48213/api/");
+    let response = client.PostAsync("Transaction", content).Result;
+    
+    response.IsSuccessStatusCode |> should equal true
