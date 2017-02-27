@@ -13,7 +13,7 @@ module Entities =
     type Shares = { 
         AccountId : string
         Symbol    : string
-        Quantity       : int 
+        Quantity  : int 
     }
 
     type Account = { AccountId:string; Shares:Shares seq }
