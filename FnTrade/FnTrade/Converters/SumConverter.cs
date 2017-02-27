@@ -12,7 +12,7 @@ namespace FnTrade.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var investments = value as IEnumerable<SharesInfo>;
-            return investments.Sum(x => x.PricePerShare * x.Shares.Qty);
+            return investments.Sum(x => x.PricePerShare * x.Shares.Quantity);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -15,7 +15,7 @@ namespace FnTrade
 
             getDispatcher().ConfirmSellRequested += async (s, e) =>
                 {
-                    var requestInfo = e as RequestInfo;
+                    var requestInfo = e as Shares;
                     var confirmed = await DisplayAlert("Confirmation",
                                           $"Selling ({(requestInfo).Quantity }) shares of {requestInfo.Symbol}?",
                                           "Confirm", "Cancel");

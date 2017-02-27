@@ -4,8 +4,8 @@
 module EventStore =
 
     type Events =
-        | BuyRequested  of RequestInfo
-        | SellRequested of RequestInfo
+        | BuyRequested  of SharesInfo
+        | SellRequested of SharesInfo
 
     let store aggregate event events = 
         events@[aggregate,event]

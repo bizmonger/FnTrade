@@ -29,7 +29,7 @@ namespace FnTrade
 
             getDispatcher().ExecuteBuyRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
-                    new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(e as RequestInfo)));
+                    new RequestBuyConfirmedPage(new RequestBuyConfirmedViewModel(e as Shares)));
 
             getDispatcher().SellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
@@ -37,7 +37,7 @@ namespace FnTrade
 
             getDispatcher().ExecuteSellRequested +=
                 async (s, e) => await MainPage.Navigation.PushAsync(
-                    new RequestSellConfirmedPage(new RequestSellConfirmedViewModel(e as RequestInfo)));
+                    new RequestSellConfirmedPage(new RequestSellConfirmedViewModel(e as Shares)));
         }
 
         protected override void OnSleep() { }

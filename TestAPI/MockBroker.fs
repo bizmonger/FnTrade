@@ -10,36 +10,30 @@ let getInfo = function
     | _      -> None
     
 let tryPurchase context balance =
-    let request = { AccountId=context.AccountId 
-                    RequestInfo.Symbol=context.Symbol
-                    RequestInfo.Quantity=context.Quantity }
         
     match getInfo context.Symbol with
-    | None -> UnknownSymbol request
+    | None -> UnknownSymbol context
     | Some stockInfo ->
         
         if  context.Quantity <= 0 then 
-            InvalidQuantity request
+            InvalidQuantity context
         
         elif balance <= stockInfo.Price * (decimal)context.Quantity then 
-            InsufficientFunds { PurchaseAttempt=request
+            InsufficientFunds { PurchaseAttempt=context
                                 Balance=balance
                                 StockPrice=stockInfo.Price }
         
-        else PurchaseRequested request
+        else PurchaseRequested context
         
-let trySell context =
-    SellRequested { AccountId= context.AccountId
-                    Symbol=    context.Symbol
-                    Quantity=  context.Quantity }
+let trySell context = SellRequested context
     
 let investmentsOf accountId =
-    let ownedMSFT =  { AccountId=accountId ; Symbol="MSFT" ;  Qty=100 }
-    let ownedROK  =  { AccountId=accountId ; Symbol="ROK"  ;  Qty=200 }
-    let ownedTSLA =  { AccountId=accountId ; Symbol="TSLA" ;  Qty=200 }
+    let ownedMSFT =  { AccountId=accountId ; Symbol="MSFT" ;  Quantity=100 }
+    let ownedROK  =  { AccountId=accountId ; Symbol="ROK"  ;  Quantity=200 }
+    let ownedTSLA =  { AccountId=accountId ; Symbol="TSLA" ;  Quantity=200 }
         
     seq [
-            { Shares=ownedMSFT ; PricePerShare=(getInfo "MSFT").Value.Price ; Total=(getInfo "MSFT").Value.Price * (decimal)ownedMSFT.Qty; Balance=20000m }
-            { Shares=ownedROK  ; PricePerShare=(getInfo "ROK" ).Value.Price ; Total=(getInfo "ROK" ).Value.Price * (decimal)ownedROK.Qty ; Balance=20000m }
-            { Shares=ownedTSLA ; PricePerShare=(getInfo "TSLA").Value.Price ; Total=(getInfo "TSLA").Value.Price * (decimal)ownedTSLA.Qty; Balance=20000m }
+            { Shares=ownedMSFT; PricePerShare=(getInfo "MSFT").Value.Price; Total=(getInfo "MSFT").Value.Price * (decimal)ownedMSFT.Quantity; Balance=20000m; PendingTransaction=false }
+            { Shares=ownedROK ; PricePerShare=(getInfo "ROK" ).Value.Price; Total=(getInfo "ROK" ).Value.Price * (decimal)ownedROK.Quantity ; Balance=20000m; PendingTransaction=false }
+            { Shares=ownedTSLA; PricePerShare=(getInfo "TSLA").Value.Price; Total=(getInfo "TSLA").Value.Price * (decimal)ownedTSLA.Quantity; Balance=20000m; PendingTransaction=false }
         ]

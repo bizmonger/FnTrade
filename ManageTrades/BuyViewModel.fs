@@ -24,7 +24,7 @@ type BuyViewModel(info:SharesInfo) as this =
     member this.Symbol     with get() = info.Shares.Symbol
     member this.Balance    with get() = info.Balance
     member this.StockPrice with get() = info.PricePerShare
-    member this.Total      with get() = ((decimal)info.Shares.Qty * info.PricePerShare)
+    member this.Total      with get() = ((decimal)info.Shares.Quantity * info.PricePerShare)
 
     member this.BuyQty    
         with get() =      buyQty

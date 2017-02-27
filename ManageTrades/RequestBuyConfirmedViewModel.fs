@@ -9,7 +9,7 @@ open System.Net.Http
 open System
 open System.Net.Http.Headers
 
-type RequestBuyConfirmedViewModel(request:RequestInfo) =
+type RequestBuyConfirmedViewModel(request:Shares) =
 
     inherit ViewModelBase()
 

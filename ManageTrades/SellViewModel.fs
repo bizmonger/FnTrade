@@ -22,9 +22,9 @@ type SellViewModel(info:SharesInfo) as this =
                                     fun _ -> true ) :> ICommand
 
     member this.Symbol     with get() = info.Shares.Symbol
-    member this.Shares     with get() = info.Shares.Qty
+    member this.Shares     with get() = info.Shares.Quantity
     member this.StockPrice with get() = info.PricePerShare
-    member this.Total      with get() = ((decimal)info.Shares.Qty * info.PricePerShare)
+    member this.Total      with get() = ((decimal)info.Shares.Quantity * info.PricePerShare)
 
     member this.SellQty    
         with get() =      sellQty

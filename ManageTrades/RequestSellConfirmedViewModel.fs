@@ -6,7 +6,7 @@ open Services
 open Integration.Factories
 open TestAPIImpl
 
-type RequestSellConfirmedViewModel(request:RequestInfo) =
+type RequestSellConfirmedViewModel(request:Shares) =
 
     inherit ViewModelBase()
 

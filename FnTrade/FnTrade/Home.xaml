@@ -46,7 +46,7 @@
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Row="0" Grid.Column="0" Text="Symbol" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                    <Label Grid.Row="0" Grid.Column="1" Text="Qty"    FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Grid.Row="0" Grid.Column="1" Text="Quantity"    FontAttributes="Bold" HorizontalTextAlignment="Center" />
                     <Label Grid.Row="0" Grid.Column="2" Text="Price"  FontAttributes="Bold" HorizontalTextAlignment="Center" />
                     <Label Grid.Row="0" Grid.Column="3" Text="Total"  FontAttributes="Bold" HorizontalTextAlignment="Center" />
 
@@ -70,7 +70,7 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0" Text="{Binding Shares.Symbol}" HorizontalTextAlignment="Center" />
-                            <Label Grid.Column="1" Text="{Binding Shares.Qty}"    HorizontalTextAlignment="Center" />
+                            <Label Grid.Column="1" Text="{Binding Shares.Quantity}"    HorizontalTextAlignment="Center" />
                             <Label Grid.Column="2" Text="{Binding PricePerShare,  StringFormat='{}{0:c}'}" HorizontalTextAlignment="Center" />
                             <Label Grid.Column="3" Text="{Binding Total,          StringFormat='{}{0:c}'}" HorizontalTextAlignment="Center" />
                         </Grid>

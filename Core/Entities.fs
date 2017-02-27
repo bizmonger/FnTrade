@@ -13,36 +13,31 @@ module Entities =
     type Shares = { 
         AccountId : string
         Symbol    : string
-        Qty       : int 
+        Quantity       : int 
     }
 
     type Account = { AccountId:string; Shares:Shares seq }
     
     type SharesInfo = {
-        Shares        : Shares
-        PricePerShare : decimal
-        Total         : decimal
-        Balance       : decimal
-    }
-    
-    type RequestInfo = { 
-        AccountId : string
-        Symbol    : string
-        Quantity  : int 
+        Shares             : Shares
+        PricePerShare      : decimal
+        Total              : decimal
+        Balance            : decimal
+        PendingTransaction : bool
     }
     
     type InsufficientFunds = {
-        PurchaseAttempt : RequestInfo
+        PurchaseAttempt : Shares
         Balance         : decimal
         StockPrice      : decimal
     }    
     
     type PurchaseResult =
-        | PurchaseRequested of RequestInfo
-        | UnknownSymbol     of RequestInfo
-        | InvalidQuantity   of RequestInfo
+        | PurchaseRequested of Shares
+        | UnknownSymbol     of Shares
+        | InvalidQuantity   of Shares
         | InsufficientFunds of InsufficientFunds
     
     type SellResult =
-        | SellRequested        of RequestInfo
-        | InsufficientQuantity of RequestInfo
+        | SellRequested        of Shares
+        | InsufficientQuantity of Shares
