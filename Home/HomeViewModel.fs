@@ -1,12 +1,14 @@
 ﻿namespace Home.ViewModels
 
 open System.Collections.ObjectModel
+open System.Collections.Generic
 open System.Windows.Input
 open Core.IntegrationLogic
 open Core.Entities
 open Integration.Factories
 open Services
 open TestAPIImpl
+open System.Linq
 
 
 type HomeViewModel() as this =
@@ -16,7 +18,25 @@ type HomeViewModel() as this =
     let dispatcher = getDispatcher()
     let accountId =  getAccountId()
 
-    let searchCommand = 
+    do dispatcher.ExecuteBuyRequested.Add <| fun o -> 
+        let shares = o :?> Shares
+        this.Investments |> Seq.toList
+                         |> List.filter (fun s -> s.Shares.Symbol = shares.Symbol)
+                         |> function 
+                            | h::t -> let collection = (this.Investments :> Collection<SharesInfo>)
+                                      collection.Remove(h) |> ignore
+                                      this.Investments.Insert(0,
+                                        { Shares             = shares
+                                          PricePerShare      = getInfo shares.Symbol
+                                                               |> function | Some info -> info.Price
+                                                                           | None      -> 0.00m
+                                          Total              = 0.00m
+                                          Balance            = 0.00m
+                                          PendingTransaction = true })
+                            | _    -> () // IDK...
+        
+
+    let searchCommand =
         DelegateCommand( (fun _ -> this.StockInfo <- getInfo this.Symbol) ,
                           fun _ -> true) :> ICommand
     let sellCommand =

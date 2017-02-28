@@ -15,11 +15,11 @@ namespace FnTrade
 
             getDispatcher().ConfirmSellRequested += async (s, e) =>
                 {
-                    var requestInfo = e as Shares;
+                    var shares = e as Shares;
                     var confirmed = await DisplayAlert("Confirmation",
-                                          $"Selling ({(requestInfo).Quantity }) shares of {requestInfo.Symbol}?",
+                                          $"Selling ({(shares).Quantity }) shares of {shares.Symbol}?",
                                           "Confirm", "Cancel");
-                    if (confirmed) getDispatcher().ExecuteSell(requestInfo);
+                    if (confirmed) getDispatcher().ExecuteSell(shares);
                 };
         }
     }
